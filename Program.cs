@@ -1,2 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using DS_Algo;
+
+Console.WriteLine("Q1");
+new Question1().TestSortedSquaredArray();

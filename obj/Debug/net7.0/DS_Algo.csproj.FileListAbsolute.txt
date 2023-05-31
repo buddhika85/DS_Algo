@@ -1,0 +1,15 @@
+D:\buddhika\projects\DS_Algo\bin\Debug\net7.0\DS_Algo.exe
+D:\buddhika\projects\DS_Algo\bin\Debug\net7.0\DS_Algo.deps.json
+D:\buddhika\projects\DS_Algo\bin\Debug\net7.0\DS_Algo.runtimeconfig.json
+D:\buddhika\projects\DS_Algo\bin\Debug\net7.0\DS_Algo.dll
+D:\buddhika\projects\DS_Algo\bin\Debug\net7.0\DS_Algo.pdb
+D:\buddhika\projects\DS_Algo\obj\Debug\net7.0\DS_Algo.csproj.AssemblyReference.cache
+D:\buddhika\projects\DS_Algo\obj\Debug\net7.0\DS_Algo.GeneratedMSBuildEditorConfig.editorconfig
+D:\buddhika\projects\DS_Algo\obj\Debug\net7.0\DS_Algo.AssemblyInfoInputs.cache
+D:\buddhika\projects\DS_Algo\obj\Debug\net7.0\DS_Algo.AssemblyInfo.cs
+D:\buddhika\projects\DS_Algo\obj\Debug\net7.0\DS_Algo.csproj.CoreCompileInputs.cache
+D:\buddhika\projects\DS_Algo\obj\Debug\net7.0\DS_Algo.dll
+D:\buddhika\projects\DS_Algo\obj\Debug\net7.0\refint\DS_Algo.dll
+D:\buddhika\projects\DS_Algo\obj\Debug\net7.0\DS_Algo.pdb
+D:\buddhika\projects\DS_Algo\obj\Debug\net7.0\DS_Algo.genruntimeconfig.cache
+D:\buddhika\projects\DS_Algo\obj\Debug\net7.0\ref\DS_Algo.dll
