@@ -14,5 +14,15 @@ namespace DS_Algo
             str += "]";
             return str;
         }
+
+        public static string DisplayYesNo(this bool? value)
+        {
+            return value == null ? "Unknown" : value.Value ? "Yes" : "No";
+        }
+
+        public static string DisplayYesNo(this bool value)
+        {
+            return value ? "Yes" : "No";
+        }
     }
 }
