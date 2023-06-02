@@ -7,4 +7,5 @@
 // new Question2().TestIsMonotonic();
 
 Console.WriteLine("Q3");
-new Question3().TestStringReverse();
+//new Question3().TestStringReverse();
+new Question3().TestStringArrayReverse();
