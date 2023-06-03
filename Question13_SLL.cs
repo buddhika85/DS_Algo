@@ -85,6 +85,9 @@ namespace DS_Algo
                     Console.WriteLine($"Exception - {e?.GetType()}, {e?.Message}");
                 }
             }
+
+            var node = sll.Get(2);
+            Console.WriteLine($"\nIndex 2 value is => {node?.Value}");                 // 3
         }
     }
 }
