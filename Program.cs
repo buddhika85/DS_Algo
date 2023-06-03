@@ -10,5 +10,8 @@
 //new Question3().TestStringReverse();
 //new Question3().TestStringArrayReverse();
 
-Console.WriteLine("Test Singly LinkedLists");
-new Question13_SLL().TestSinglyLinkedList();
+//Console.WriteLine("Test Singly LinkedLists");
+//new Question13_SLL().TestSinglyLinkedList();
+
+Console.WriteLine("SinglyLinkedListRemoveDuplicates");
+new SinglyLinkedListRemoveDuplicates().RemoveDuplicatesTest();
