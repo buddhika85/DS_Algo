@@ -13,5 +13,9 @@
 //Console.WriteLine("Test Singly LinkedLists");
 //new Question13_SLL().TestSinglyLinkedList();
 
-Console.WriteLine("SinglyLinkedListRemoveDuplicates");
-new SinglyLinkedListRemoveDuplicates().RemoveDuplicatesTest();
+// Console.WriteLine("SinglyLinkedListRemoveDuplicates");
+// new SinglyLinkedListRemoveDuplicates().RemoveDuplicatesTest();
+
+
+Console.WriteLine("SinglyLinkedListReverse");
+new SinglyLinkedListReverse().TestReverseLinkedList();
