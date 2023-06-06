@@ -16,6 +16,9 @@
 // Console.WriteLine("SinglyLinkedListRemoveDuplicates");
 // new SinglyLinkedListRemoveDuplicates().RemoveDuplicatesTest();
 
+//Console.WriteLine("SinglyLinkedListReverse");
+//new SinglyLinkedListReverse().TestReverseLinkedList();
 
-Console.WriteLine("SinglyLinkedListReverse");
-new SinglyLinkedListReverse().TestReverseLinkedList();
+
+Console.WriteLine("SinglyLinkedListCycleDetection");
+new SinglyLinkedListCycleDetection().TestGetCycleStartNode();
