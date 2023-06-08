@@ -72,28 +72,22 @@ namespace DS_Algo
         public void TestGetCycleStartNodeTortoiseHare()
         {
             var sll = new SinglyLinkedList();
-            sll.AddAtIndex(0, 0);
-            sll.AddAtIndex(1, 1);
-            sll.AddAtIndex(2, 2);
-            sll.AddAtIndex(3, sll.Get(1).Value);
-            sll.AddAtIndex(4, 5);
+            var iZero = new Node();
+            iZero.Value = 0;
+            var iOne = new Node();
+            iOne.Value = 1;
+            var iTwo = new Node();
+            iTwo.Value = 2;
+            var iThree = iOne; // cycle
 
-            Console.WriteLine(sll.ToString());  // 0 -> 1 -> 2 -> 1 -> 5
+            iZero.Next = iOne;
+            iOne.Next = iTwo;
+            iTwo.Next = iThree; // cycle
+
+            sll.Head = iZero;
+
+            //Console.WriteLine(sll.ToString());  // 0 -> 1 -> 2 -> 1  // cannot print because of cycle
             var cycleStartNode = GetCycleStartNodeTortoiseHare(sll.Head);
-            if (cycleStartNode != null)
-            {
-                Console.WriteLine($"Cycle start node: {cycleStartNode.Value}");
-            }
-            else
-            {
-                Console.WriteLine($"No cycle detected");
-            }
-
-            sll.DeleteAtIndex(3);
-            Console.WriteLine($"\nRemoved Cycle Node: {sll.ToString()}");
-            sll.AddAtIndex(3, 4);
-            Console.WriteLine(sll.ToString());  // 0 -> 1 -> 2 -> 1 -> 5
-            cycleStartNode = GetCycleStartNodeTortoiseHare(sll.Head);
             if (cycleStartNode != null)
             {
                 Console.WriteLine($"Cycle start node: {cycleStartNode.Value}");
@@ -111,7 +105,7 @@ namespace DS_Algo
         {
             Node tortoise = head;
             Node hare = head;
-            while(tortoise != null)
+            while(hare != null && hare.Next != null)
             {
                 tortoise = tortoise?.Next;
                 if (hare.Next != null && hare.Next.Next != null)
