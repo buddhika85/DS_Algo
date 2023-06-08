@@ -47,6 +47,7 @@ namespace DS_Algo
             }
         }
 
+        // Brute Force technique - Time Complexity -> O(n) Space Complexity -> O(n)
         public Node? GetCycleStartNode(Node head)
         {
             var node = head;
@@ -63,6 +64,70 @@ namespace DS_Algo
                     dictionary.Add(node.Value, node);
                 }
                 node = node.Next;
+            }
+            return null;    // no cycle
+        }
+
+        
+        public void TestGetCycleStartNodeTortoiseHare()
+        {
+            var sll = new SinglyLinkedList();
+            sll.AddAtIndex(0, 0);
+            sll.AddAtIndex(1, 1);
+            sll.AddAtIndex(2, 2);
+            sll.AddAtIndex(3, sll.Get(1).Value);
+            sll.AddAtIndex(4, 5);
+
+            Console.WriteLine(sll.ToString());  // 0 -> 1 -> 2 -> 1 -> 5
+            var cycleStartNode = GetCycleStartNodeTortoiseHare(sll.Head);
+            if (cycleStartNode != null)
+            {
+                Console.WriteLine($"Cycle start node: {cycleStartNode.Value}");
+            }
+            else
+            {
+                Console.WriteLine($"No cycle detected");
+            }
+
+            sll.DeleteAtIndex(3);
+            Console.WriteLine($"\nRemoved Cycle Node: {sll.ToString()}");
+            sll.AddAtIndex(3, 4);
+            Console.WriteLine(sll.ToString());  // 0 -> 1 -> 2 -> 1 -> 5
+            cycleStartNode = GetCycleStartNodeTortoiseHare(sll.Head);
+            if (cycleStartNode != null)
+            {
+                Console.WriteLine($"Cycle start node: {cycleStartNode.Value}");
+            }
+            else
+            {
+                Console.WriteLine($"No cycle detected");
+            }
+        }
+
+        // uses Floyds tortooise and hare algorithm
+        // Time Complexity -> O(n) Space Complexity -> O(1)
+        // 0 -> 1 -> 2 -> 1 -> 5
+        public Node? GetCycleStartNodeTortoiseHare(Node head)
+        {
+            Node tortoise = head;
+            Node hare = head;
+            while(tortoise != null)
+            {
+                tortoise = tortoise?.Next;
+                if (hare.Next != null && hare.Next.Next != null)
+                {
+                    hare = hare?.Next?.Next;
+                }
+                else
+                {
+                    hare =  head?.Next?.Next;
+                }
+
+                if (tortoise == hare)
+                {
+                    // tortoise and hare has met
+                    return hare?.Next?.Next;
+                }
             }
             return null;    // no cycle
         }

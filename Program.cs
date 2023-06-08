@@ -21,4 +21,5 @@
 
 
 Console.WriteLine("SinglyLinkedListCycleDetection");
-new SinglyLinkedListCycleDetection().TestGetCycleStartNode();
+// new SinglyLinkedListCycleDetection().TestGetCycleStartNode();
+new SinglyLinkedListCycleDetection().TestGetCycleStartNodeTortoiseHare();
