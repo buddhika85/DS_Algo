@@ -86,6 +86,8 @@ namespace DS_Algo
 
             sll.Head = iZero;
 
+            // 0 -> 1 -> 2 -> 1
+
             //Console.WriteLine(sll.ToString());  // 0 -> 1 -> 2 -> 1  // cannot print because of cycle
             var cycleStartNode = GetCycleStartNodeTortoiseHare(sll.Head);
             if (cycleStartNode != null)
@@ -105,7 +107,9 @@ namespace DS_Algo
         {
             Node tortoise = head;
             Node hare = head;
-            while(hare != null && hare.Next != null)
+            var torotiseAndHareMet = false;
+
+            while(hare != null && hare.Next != null && !torotiseAndHareMet)
             {
                 tortoise = tortoise?.Next;
                 if (hare.Next != null && hare.Next.Next != null)
@@ -120,9 +124,23 @@ namespace DS_Algo
                 if (tortoise == hare)
                 {
                     // tortoise and hare has met
-                    return hare?.Next?.Next;
+                    torotiseAndHareMet = true;
                 }
             }
+
+            if (torotiseAndHareMet && tortoise != null)
+            {
+                var pointer = head;
+                while(pointer != tortoise)
+                {
+                    pointer = pointer?.Next;
+                    tortoise = tortoise?.Next;
+                }
+
+                if (pointer == tortoise)
+                    return pointer;
+            }
+
             return null;    // no cycle
         }
     }
