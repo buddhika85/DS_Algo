@@ -111,10 +111,10 @@ namespace DS_Algo
 
             while(hare != null && hare.Next != null && !torotiseAndHareMet)
             {
-                tortoise = tortoise?.Next;
+                tortoise = tortoise?.Next;  // tortoise moves 1 step at a time
                 if (hare.Next != null && hare.Next.Next != null)
                 {
-                    hare = hare?.Next?.Next;
+                    hare = hare?.Next?.Next;    // hare moves 2 steps at a time
                 }
                 else
                 {
@@ -130,7 +130,7 @@ namespace DS_Algo
 
             if (torotiseAndHareMet && tortoise != null)
             {
-                var pointer = head;
+                var pointer = head;     // new pointer
                 while(pointer != tortoise)
                 {
                     pointer = pointer?.Next;
@@ -138,7 +138,7 @@ namespace DS_Algo
                 }
 
                 if (pointer == tortoise)
-                    return pointer;
+                    return pointer;     // if the pointer meets toroize - this is where cycle begins
             }
 
             return null;    // no cycle
