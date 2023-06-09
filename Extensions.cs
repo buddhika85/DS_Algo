@@ -32,5 +32,15 @@ namespace DS_Algo
         {
             return value ? "Yes" : "No";
         }
+
+        // extension method from DLL node to point next and next to point to current
+        public static void LinkToNextDllNode(this DllNode? curr, DllNode? next)
+        {
+            if (curr != null && next != null)
+            {
+                curr.Next = next;
+                next.Prev = curr;
+            }
+        }
     }
 }
