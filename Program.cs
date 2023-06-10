@@ -20,6 +20,10 @@
 //new SinglyLinkedListReverse().TestReverseLinkedList();
 
 
-Console.WriteLine("SinglyLinkedListCycleDetection");
+//Console.WriteLine("SinglyLinkedListCycleDetection");
 // new SinglyLinkedListCycleDetection().TestGetCycleStartNode();
-new SinglyLinkedListCycleDetection().TestGetCycleStartNodeTortoiseHare();
+//new SinglyLinkedListCycleDetection().TestGetCycleStartNodeTortoiseHare();
+
+
+Console.WriteLine("DoublyLLRemoveInsert");
+new DoublyLLRemoveInsert().TestDoublyLLRemove();
