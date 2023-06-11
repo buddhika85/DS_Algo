@@ -35,41 +35,33 @@ namespace DS_Algo
         {
             if (node == null)
                 return;
-            
-            var curr = Head;
-            while(curr != null)
+
+            if (node == Head)
             {
-                if (curr ==  node)
+                // remove first node
+                Head = node.Next;
+                if (node.Next != null)
                 {
-                    if (curr == Head)
-                    {
-                        // remove first node
-                        Head = curr.Next;
-                        if (curr.Next != null)
-                        {
-                            curr.Next.Prev = null;
-                        }
-                    }
-                    else if (curr == Tail)
-                    {
-                        // remove last node
-                        Tail = curr.Prev;
-                        if (curr.Prev != null)
-                        {
-                            curr.Prev.Next = null;
-                        }
-                    }
-                    else
-                    {
-                        // remove from middle
-                        if (curr.Prev != null)
-                            curr.Prev.Next = curr.Next;
-                        if (curr.Next != null)
-                            curr.Next.Prev = curr.Prev;
-                    }
+                    node.Next.Prev = null;
                 }
-                curr = curr.Next;
             }
+            else if (node == Tail)
+            {
+                // remove last node
+                Tail = node.Prev;
+                if (node.Prev != null)
+                {
+                    node.Prev.Next = null;
+                }
+            }
+            else
+            {
+                // remove from middle
+                if (node.Prev != null)
+                    node.Prev.Next = node.Next;
+                if (node.Next != null)
+                    node.Next.Prev = node.Prev;
+            }            
         }
     }
 
