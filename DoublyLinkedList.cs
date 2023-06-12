@@ -31,6 +31,7 @@ namespace DS_Algo
             return stringBuilder.ToString();
         }
 
+        // O(1) time and space complexity
         public void RemoveNode(DllNode node)
         {
             if (node == null)
@@ -62,6 +63,25 @@ namespace DS_Algo
                 if (node.Next != null)
                     node.Next.Prev = node.Prev;
             }            
+        }
+
+        // Head -> 1 <=> 2 <=> 3 <- Tail
+        // put 3 before 2 - output = Head -> 1 <=> 3 <=> 2 <- Tail
+        // nodeBefore = 2, nodeToInsert = 3
+        // next = nodeToInsert.next
+        // prev = nodebefore.prev
+        // if prev == null
+        //      head = nodeToInsetr
+        // else
+        //      prev.next = nodeToInsert
+        // nodeToInsert.prev = prev
+        // nodeBefore.prev = nodeToInsert
+        // nodeBefore.next = next
+        // if next == null
+        //      tail = nodeBefore
+        public void Insert(DllNode nodeToInsert, DllNode nodeBefore)
+        {
+
         }
     }
 
