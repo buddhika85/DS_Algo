@@ -25,5 +25,8 @@
 //new SinglyLinkedListCycleDetection().TestGetCycleStartNodeTortoiseHare();
 
 
-Console.WriteLine("DoublyLLRemoveInsert");
-new DoublyLLRemoveInsert().TestDoublyLLRemove();
+// Console.WriteLine("DoublyLL Remove");
+// new DoublyLLRemoveInsert().TestDoublyLLRemove();
+
+Console.WriteLine("DoublyLL Insert");
+new DoublyLLRemoveInsert().TestDoublyLLInsert();

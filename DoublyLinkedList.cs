@@ -65,23 +65,36 @@ namespace DS_Algo
             }            
         }
 
-        // Head -> 1 <=> 2 <=> 3 <- Tail
-        // put 3 before 2 - output = Head -> 1 <=> 3 <=> 2 <- Tail
-        // nodeBefore = 2, nodeToInsert = 3
-        // next = nodeToInsert.next
-        // prev = nodebefore.prev
-        // if prev == null
-        //      head = nodeToInsetr
-        // else
-        //      prev.next = nodeToInsert
-        // nodeToInsert.prev = prev
-        // nodeBefore.prev = nodeToInsert
-        // nodeBefore.next = next
-        // if next == null
-        //      tail = nodeBefore
+        // null <- 1 <=> 2 <=> 3 <=> 4 -> null
+        // insert node 3 before node 2        
+        // null <- 1 <=> 3 <=> 2 <=> 4 -> null
+
+        // null <- 1 <=> 2 <=> 3 <=> 4 -> null
+        // insert node 5 before node 1        
+        // null 5 <=> 1 <=> 3 <=> 2 <=> 4 -> null
         public void Insert(DllNode nodeToInsert, DllNode nodeBefore)
         {
+            // remove node to insert if its there
+            RemoveNode(nodeToInsert);
 
+            var newAfter = nodeBefore;
+            var newBefore = nodeBefore.Prev;
+
+            if (newBefore == null)
+            {
+                // insert a new head and shift all
+                Head = nodeToInsert;
+                nodeToInsert.Prev = null;
+            }
+            else
+            {
+                // insert in the middle
+                newBefore.Next = nodeToInsert;
+                nodeToInsert.Prev = newBefore;
+            }
+
+            nodeToInsert.Next = newAfter;
+            newAfter.Prev = nodeToInsert;
         }
     }
 
