@@ -71,5 +71,55 @@ namespace DS_Algo
             newDll.Insert(five, two);
             Console.WriteLine(newDll.ToString());
         }
+
+        public void TestDoublyLLRemoveByValue()
+        {
+            var newDll = CreateTestDll();            
+            Console.WriteLine(newDll.ToString());
+
+            Console.WriteLine($"Remove unavailable: {5}");
+            newDll.Remove(6);
+            Console.WriteLine(newDll.ToString());
+
+            Console.WriteLine($"\nRemove: {2}");
+            newDll.Remove(2);
+            Console.WriteLine(newDll.ToString());
+
+            newDll = CreateTestDll();     
+            Console.WriteLine("\nDoubly Linked List:");       
+            Console.WriteLine(newDll.ToString());
+
+            Console.WriteLine($"\nRemove Head: {1}");
+            newDll.Remove(1);
+            Console.WriteLine(newDll.ToString());
+
+            newDll = CreateTestDll();     
+            Console.WriteLine("\nDoubly Linked List:");       
+            Console.WriteLine(newDll.ToString());
+
+            Console.WriteLine($"\nRemove Last: {4}");
+            newDll.Remove(4);
+            Console.WriteLine(newDll.ToString());
+        }
+
+        private DoublyLinkedList CreateTestDll()
+        {
+            var one = new DllNode { Value = 1 };
+            var two = new DllNode { Value = 2 };
+            var twoX = new DllNode { Value = 2 };
+            var twoY = new DllNode { Value = 2 };
+            var three = new DllNode { Value = 3 };
+            var twoZ = new DllNode { Value = 2 };
+            var four = new DllNode { Value = 4 };
+
+            one.LinkToNextDllNode(two);
+            two.LinkToNextDllNode(twoX);
+            twoX.LinkToNextDllNode(twoY);
+            twoY.LinkToNextDllNode(three);  
+            three.LinkToNextDllNode(twoZ);
+            twoZ.LinkToNextDllNode(four);
+
+            return new DoublyLinkedList { Head = one, Tail = four };
+        }
     }
 }
