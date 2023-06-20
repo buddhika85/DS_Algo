@@ -34,5 +34,8 @@
 // Console.WriteLine("DoublyLL Remove all By Value");
 // new DoublyLLRemoveInsert().TestDoublyLLRemoveByValue();
 
-Console.WriteLine("DoublyLL Insert at position tests");
-new DoublyLLRemoveInsert().TestInsertAtPosition();
+// Console.WriteLine("DoublyLL Insert at position tests");
+// new DoublyLLRemoveInsert().TestInsertAtPosition();
+
+Console.WriteLine("Stack using an array");
+new StackUsingArrayTests().Test();

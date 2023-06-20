@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
 namespace DS_Algo
 {
@@ -35,7 +32,7 @@ namespace DS_Algo
             --Length;
             // remove from the top of the array
             var last = _array[Length];
-            _array[Length] = 0;
+            _array[Length] = 0;     // int default value
             return last;
         }
 
@@ -55,6 +52,19 @@ namespace DS_Algo
                 resizeArray[i] = _array[i];
             }
             _array = resizeArray;
+        }
+
+        public override string ToString()
+        {
+            if (Length == 0)
+                return "Empty";
+            var sb = new StringBuilder();
+            // LIFO
+            for (int i = Length - 1; i >= 0; i--)
+            {
+                sb.AppendLine($"{_array[i].ToString()},");                
+            }
+            return sb.ToString();
         }
     }
 }
