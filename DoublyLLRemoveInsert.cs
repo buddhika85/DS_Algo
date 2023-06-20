@@ -121,5 +121,152 @@ namespace DS_Algo
 
             return new DoublyLinkedList { Head = one, Tail = four };
         }
+   
+        public void TestInsertAtPosition()
+        {
+            Console.WriteLine("Insert to empty");
+            var newDll = new DoublyLinkedList { Head = null, Tail = null };
+            Console.WriteLine(newDll.ToString());
+            newDll.InsertAtPosition(2, new DllNode { Value = 1 });
+            Console.WriteLine(newDll.ToString());
+
+            Console.WriteLine("\n\n\n----------Node Unavailable Tests --");
+
+            Console.WriteLine("\nInsert to Head - Unavailable");
+            var one = new DllNode { Value = 1 };
+            var two = new DllNode { Value = 2 };
+            var three = new DllNode { Value = 3 };
+            var four = new DllNode { Value = 4 };
+
+            one.LinkToNextDllNode(two);
+            two.LinkToNextDllNode(three);
+            three.LinkToNextDllNode(four);
+
+            newDll = new DoublyLinkedList { Head = one, Tail = four };
+            Console.WriteLine(newDll.ToString());
+
+            newDll.InsertAtPosition(0, new DllNode { Value = 10 });
+            Console.WriteLine(newDll.ToString());
+
+            Console.WriteLine("\nInsert to Middle - index 2 - Unavailable");
+            one = new DllNode { Value = 1 };
+            two = new DllNode { Value = 2 };
+            three = new DllNode { Value = 3 };
+            four = new DllNode { Value = 4 };
+
+            one.LinkToNextDllNode(two);
+            two.LinkToNextDllNode(three);
+            three.LinkToNextDllNode(four);
+
+            newDll = new DoublyLinkedList { Head = one, Tail = four };
+            Console.WriteLine(newDll.ToString());
+
+            newDll.InsertAtPosition(2, new DllNode { Value = 10 });
+            Console.WriteLine(newDll.ToString());
+
+            Console.WriteLine("\nInsert to Tail - Unavailable");
+            one = new DllNode { Value = 1 };
+            two = new DllNode { Value = 2 };
+            three = new DllNode { Value = 3 };
+            four = new DllNode { Value = 4 };
+
+            one.LinkToNextDllNode(two);
+            two.LinkToNextDllNode(three);
+            three.LinkToNextDllNode(four);
+
+            newDll = new DoublyLinkedList { Head = one, Tail = four };
+            Console.WriteLine(newDll.ToString());
+
+            newDll.InsertAtPosition(10, new DllNode { Value = 10 });
+            Console.WriteLine(newDll.ToString());
+
+
+
+
+
+            Console.WriteLine("\n\n\n----------Node already available Tests --");
+
+            Console.WriteLine("\nInsert Available - 2 is in index 1 - already in the correct place - no changes expected");
+            one = new DllNode { Value = 1 };
+            two = new DllNode { Value = 2 };
+            three = new DllNode { Value = 3 };
+            four = new DllNode { Value = 4 };
+
+            one.LinkToNextDllNode(two);
+            two.LinkToNextDllNode(three);
+            three.LinkToNextDllNode(four);
+
+            newDll = new DoublyLinkedList { Head = one, Tail = four };
+            Console.WriteLine(newDll.ToString());
+
+            newDll.InsertAtPosition(1, two);
+            Console.WriteLine(newDll.ToString());
+
+
+            Console.WriteLine("\nInsert to Head - Available - Change position of 4 to head");
+            one = new DllNode { Value = 1 };
+            two = new DllNode { Value = 2 };
+            three = new DllNode { Value = 3 };
+            four = new DllNode { Value = 4 };
+
+            one.LinkToNextDllNode(two);
+            two.LinkToNextDllNode(three);
+            three.LinkToNextDllNode(four);
+
+            newDll = new DoublyLinkedList { Head = one, Tail = four };
+            Console.WriteLine(newDll.ToString());
+
+            newDll.InsertAtPosition(0, four);
+            Console.WriteLine(newDll.ToString());
+
+            Console.WriteLine("\nInsert to Middle - Available - Change position of 4 to index 1");
+            one = new DllNode { Value = 1 };
+            two = new DllNode { Value = 2 };
+            three = new DllNode { Value = 3 };
+            four = new DllNode { Value = 4 };
+
+            one.LinkToNextDllNode(two);
+            two.LinkToNextDllNode(three);
+            three.LinkToNextDllNode(four);
+
+            newDll = new DoublyLinkedList { Head = one, Tail = four };
+            Console.WriteLine(newDll.ToString());
+
+            newDll.InsertAtPosition(1, four);
+            Console.WriteLine(newDll.ToString());
+
+            Console.WriteLine("\nInsert to Tail - Available - Change position of 2 to index 3");
+            one = new DllNode { Value = 1 };
+            two = new DllNode { Value = 2 };
+            three = new DllNode { Value = 3 };
+            four = new DllNode { Value = 4 };
+
+            one.LinkToNextDllNode(two);
+            two.LinkToNextDllNode(three);
+            three.LinkToNextDllNode(four);
+
+            newDll = new DoublyLinkedList { Head = one, Tail = four };
+            Console.WriteLine(newDll.ToString());
+
+            newDll.InsertAtPosition(3, two);
+            Console.WriteLine(newDll.ToString());
+
+
+            Console.WriteLine("\nInsert to Tail - Available - Change position of 2 to index 20");
+            one = new DllNode { Value = 1 };
+            two = new DllNode { Value = 2 };
+            three = new DllNode { Value = 3 };
+            four = new DllNode { Value = 4 };
+
+            one.LinkToNextDllNode(two);
+            two.LinkToNextDllNode(three);
+            three.LinkToNextDllNode(four);
+
+            newDll = new DoublyLinkedList { Head = one, Tail = four };
+            Console.WriteLine(newDll.ToString());
+
+            newDll.InsertAtPosition(20, two);
+            Console.WriteLine(newDll.ToString());
+        }
     }
 }

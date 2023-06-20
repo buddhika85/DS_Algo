@@ -31,5 +31,8 @@
 // Console.WriteLine("DoublyLL Insert");
 // new DoublyLLRemoveInsert().TestDoublyLLInsert();
 
-Console.WriteLine("DoublyLL Remove all By Value");
-new DoublyLLRemoveInsert().TestDoublyLLRemoveByValue();
+// Console.WriteLine("DoublyLL Remove all By Value");
+// new DoublyLLRemoveInsert().TestDoublyLLRemoveByValue();
+
+Console.WriteLine("DoublyLL Insert at position tests");
+new DoublyLLRemoveInsert().TestInsertAtPosition();

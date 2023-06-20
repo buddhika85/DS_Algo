@@ -138,7 +138,7 @@ namespace DS_Algo
     
         // Time complexity - O(n)
         // space complexity - O(1)
-        public void InsertAtPosition(DllNode node, int position)
+        public void InsertAtPosition(int position, DllNode node)
         {
             if (node == null)
                 return;     // invalid position
@@ -153,17 +153,20 @@ namespace DS_Algo
                 return;         
             }
 
+            // remove if exits
+            RemoveNode(node);
+
             // insert to head
             if (position == 0)
             {
                 node.Next = Head;
                 Head.Prev = node;
                 Head = node;
+                node.Prev = null;
                 return;
             }
 
-            // remove if exits
-            RemoveNode(node);
+           
 
             // insert at the position
             var index = 1;
@@ -191,6 +194,7 @@ namespace DS_Algo
             {
                 Tail.Next = node;
                 node.Prev = Tail;
+                node.Next = null;
                 Tail = node;
             }
         }
