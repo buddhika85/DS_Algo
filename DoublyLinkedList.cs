@@ -164,9 +164,7 @@ namespace DS_Algo
                 Head = node;
                 node.Prev = null;
                 return;
-            }
-
-           
+            }          
 
             // insert at the position
             var index = 1;
