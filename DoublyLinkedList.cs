@@ -100,6 +100,8 @@ namespace DS_Algo
             newAfter.Prev = nodeToInsert;
         }
 
+        // Time complexity - O(n)
+        // space complexity - O(1)
         public void Remove(int valueToRemove)
         {
             if (Head == null)
@@ -132,6 +134,65 @@ namespace DS_Algo
                 lastNodeNotRemoved.Next = null;
             }
             
+        }
+    
+        // Time complexity - O(n)
+        // space complexity - O(1)
+        public void InsertAtPosition(DllNode node, int position)
+        {
+            if (node == null)
+                return;     // invalid position
+            if (position < 0)
+                return;     // invalid position
+            
+            // no nodes
+            if (Head == null)
+            {
+                Head = node;
+                Tail = node;       
+                return;         
+            }
+
+            // insert to head
+            if (position == 0)
+            {
+                node.Next = Head;
+                Head.Prev = node;
+                Head = node;
+                return;
+            }
+
+            // remove if exits
+            RemoveNode(node);
+
+            // insert at the position
+            var index = 1;
+            var curr = Head.Next;
+            var inserted = false;
+            while(curr != null && !inserted)
+            {
+                if (index == position)
+                {
+                    // perform the insert
+                    if (curr.Prev != null)
+                    {
+                        curr.Prev.Next = node;
+                        node.Prev = curr.Prev;
+                    }
+                    curr.Prev = node;
+                    node.Next = curr;
+                    inserted = true;
+                }
+                ++index;
+                curr = curr.Next;
+            }
+
+            if (!inserted)
+            {
+                Tail.Next = node;
+                node.Prev = Tail;
+                Tail = node;
+            }
         }
     }
 
