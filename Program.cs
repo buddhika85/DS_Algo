@@ -37,5 +37,8 @@
 // Console.WriteLine("DoublyLL Insert at position tests");
 // new DoublyLLRemoveInsert().TestInsertAtPosition();
 
-Console.WriteLine("Stack using an array");
-new StackUsingArrayTests().Test();
+// Console.WriteLine("Stack using an array");
+// new StackUsingArrayTests().Test();
+
+Console.WriteLine("Stack using nodes\n");
+new StackUsingNodesTests().Test();

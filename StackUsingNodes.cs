@@ -59,6 +59,7 @@ namespace DS_Algo
                 sb.AppendLine($"{curr.Value}");
                 curr = curr.Next;
             }
+            sb.AppendLine($"\nLength : {Length}");
             return sb.ToString();
         }
     }
