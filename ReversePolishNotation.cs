@@ -20,8 +20,7 @@ namespace DS_Algo
                 }
             }
             return stack.Pop();
-        }
-
+        }        
         private int DoMath(int num1, int num2, string token)
         {
             switch(token)
@@ -38,5 +37,22 @@ namespace DS_Algo
                     return 0;
             }
         }
+
+        public void Test()
+        {
+            var data = new List<(string[], int)>
+            {
+                new (new string[] {"1", "2", "+"}, 3),
+                new (new string[] {"1", "2", "3", "+", "-"}, -4),
+                new (new string[] {"4", "3", "1"}, 1),
+                new (new string[] {"2", "3", "4", "+", "-", "7", "*"}, -35),
+                new (new string[] {"5", "6", "4", "/", "-", "+", "1", "-"}, 5)
+            };
+            foreach (var item in data)
+            {
+                Console.WriteLine($"{Evaulate(item.Item1) == item.Item2}");
+            }
+        }
+
     }
 }

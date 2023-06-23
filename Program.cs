@@ -40,5 +40,8 @@
 // Console.WriteLine("Stack using an array");
 // new StackUsingArrayTests().Test();
 
-Console.WriteLine("Stack using nodes\n");
-new StackUsingNodesTests().Test();
+// Console.WriteLine("Stack using nodes\n");
+// new StackUsingNodesTests().Test();
+
+Console.WriteLine("Reverse Polish Notation\n");
+new ReversePolishNotation().Test();
