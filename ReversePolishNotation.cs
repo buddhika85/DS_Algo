@@ -46,7 +46,7 @@ namespace DS_Algo
                 new (new string[] {"1", "2", "3", "+", "-"}, -4),
                 new (new string[] {"4", "3", "1"}, 1),
                 new (new string[] {"2", "3", "4", "+", "-", "7", "*"}, -35),
-                new (new string[] {"5", "6", "4", "/", "-", "+", "1", "-"}, 5)
+                new (new string[] {"5", "6", "4", "/", "+", "1", "-"}, 5)
             };
             foreach (var item in data)
             {
