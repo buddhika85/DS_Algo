@@ -2,6 +2,7 @@ namespace DS_Algo
 {
     public class ReversePolishNotation
     {
+        // Time and Space complexity - O(n)
         public int Evaulate(string[] tokens)
         {
             var stack = new Stack<int>();
