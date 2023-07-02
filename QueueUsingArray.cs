@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace DS_Algo
 {
@@ -10,22 +6,22 @@ namespace DS_Algo
     public class QueueUsingArray
     {
         private object[] _array = new object[100];
-        private int _length;
+        public int Length {get; private set;}
 
         // join to last
         public void Enqueue(object value)
         {
-            if (_length == _array.Length)
+            if (Length == _array.Length)
             {
                 DoubleTheSize();
             }
-            _array[_length++] = value;      // insert to last and then increase length
+            _array[Length++] = value;      // insert to last and then increase length
         }
 
         // take first out
         public object Dequeue()
         {
-            if (_length == 0)
+            if (Length == 0)
                 throw new InvalidOperationException("Queue is empty. Cannot Dequeue");
             
             // first in element
@@ -38,8 +34,16 @@ namespace DS_Algo
             }
 
             // decrease length
-            --_length;
+            --Length;
             return varFirstIn;
+        }
+
+        // look at first one to go out - not removing
+        public object Peek()
+        {
+            if (Length == 0)
+                throw new InvalidOperationException("Queue is empty. Cannot Dequeue");
+            return _array[0];
         }
 
         private void DoubleTheSize()
@@ -55,11 +59,12 @@ namespace DS_Algo
 
         public override string ToString()
         {
-            if (_length == 0)
+            if (Length == 0)
                 return "Empty Queue";
             
             StringBuilder sb = new();
-            for (int i = 0; i < _array.Length; i++)
+            sb.AppendLine($"Queue with length {Length}");
+            for (int i = 0; i < Length; i++)
             {
                 sb.AppendLine($"{_array[i]}");
             }
