@@ -47,7 +47,7 @@ namespace DS_Algo
                 First = dequeued.Next;
             }
             --Length;
-            return dequeued;
+            return dequeued.Value;
         }
 
         public object Peek()
