@@ -11,6 +11,7 @@ namespace DS_Algo
         // join to last
         public void Enqueue(object value)
         {
+
             if (Length == _array.Length)
             {
                 DoubleTheSize();
