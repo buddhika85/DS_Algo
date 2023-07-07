@@ -72,7 +72,8 @@ namespace DS_Algo
         {
             if (IsEmpty())
                 return "Empty Queue";
-            FillOutStack();
+            if (_inStack.Any())    
+                FillOutStack();
             StringBuilder sb = new();
             foreach (var item in _outStack)
             {
