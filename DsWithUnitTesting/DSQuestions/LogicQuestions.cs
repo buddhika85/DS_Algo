@@ -31,5 +31,18 @@
             }
             return rotatedArray;
         }
+
+        public int[] Reverse(int[] array)
+        {
+            var left = 0;
+            var right = array.Length - 1;
+            while (left < right)
+            {
+                var temp = array[left];
+                array[left--] = array[right];
+                array[right--] = temp;
+            }
+            return array;
+        }
     }
 }

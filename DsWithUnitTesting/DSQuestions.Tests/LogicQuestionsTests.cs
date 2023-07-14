@@ -28,5 +28,20 @@ namespace DSQuestions.Tests
             // assert
             Assert.That(actualRotation, Is.EquivalentTo(expectedRotation));
         }
+
+        [Test]
+        [TestCase(new[] { 1, 2, 3 }, new[] { 3, 2, 1 })]
+        [TestCase(new[] { 1, 2, 3, 4 }, new[] { 4, 3, 2, 1 })]
+        public void Reverse_WhenCalled_ReversedArray(int[] array, int[] reversed)
+        {
+            // arrange
+            // done in setup
+
+            // act
+            var actualReversed = _logicQuestions.Reverse(array);
+
+            // assert
+            Assert.That(actualReversed, Is.EquivalentTo(reversed));
+        }
     }
 }
