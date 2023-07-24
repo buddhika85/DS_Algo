@@ -43,5 +43,24 @@ namespace DSQuestions.Tests
             // assert
             Assert.That(actualReversed, Is.EquivalentTo(reversed));
         }
+
+        [Test]
+        [TestCase(new int[0], 1, new int[0])]
+        [TestCase(new[] { 1 }, 1, new int[0])]
+        [TestCase(new[] { 2, 7 }, 9, new[] { 0, 1 })]
+        [TestCase(new[] { 2, 1, 7 }, 9, new[] { 0, 2 })]
+        [TestCase(new[] { 2, 7, 3, -1, 4 }, 2, new[] { 2, 3 })]
+        [TestCase(new[] { 2, 7, 3, -1, 4 }, 100, new int[0])]
+        public void TwoSum_WhenCalled_ReturnsArrayWithIndexing(int[] data, int sum, int[] indexes)
+        {
+            // arrange
+            // done in setup
+
+            // act
+            var indexesFound = _logicQuestions.TwoSum(data, sum);
+
+            // assert
+            Assert.That(indexesFound, Is.EquivalentTo(indexes));
+        }
     }
 }

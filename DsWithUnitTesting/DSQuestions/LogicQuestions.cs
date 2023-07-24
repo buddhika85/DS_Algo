@@ -58,8 +58,6 @@
             var dictionary = new Dictionary<int, int>();
             for (var i = 0; i < array.Length; i++)
             {
-                if (array[i] > sum)
-                    continue;
                 var toAdd = sum - array[i];
                 if (dictionary.ContainsKey(toAdd))
                 {
