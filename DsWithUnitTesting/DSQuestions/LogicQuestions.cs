@@ -44,5 +44,31 @@
             }
             return array;
         }
+
+        public int[] TwoSum(int[] array, int sum)
+        {
+            switch (array.Length)
+            {
+                case <= 1:
+                    return Array.Empty<int>();
+                case 2 when array[0] + array[1] == sum:
+                    return new[] { 0, 1 };
+            }
+
+            var dictionary = new Dictionary<int, int>();
+            for (var i = 0; i < array.Length; i++)
+            {
+                if (array[i] > sum)
+                    continue;
+                var toAdd = sum - array[i];
+                if (dictionary.ContainsKey(toAdd))
+                {
+                    return new[] { i, dictionary[toAdd] };
+                }
+                dictionary.Add(array[i], i);    // key, value
+            }
+            return Array.Empty<int>();
+        }
+
     }
 }
