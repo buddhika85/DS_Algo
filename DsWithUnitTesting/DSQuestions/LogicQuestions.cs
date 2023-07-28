@@ -68,5 +68,33 @@
             return Array.Empty<int>();
         }
 
+        public bool IsIsomorphic(string strOne, string strTwo)
+        {
+            if (string.IsNullOrWhiteSpace(strOne) || string.IsNullOrWhiteSpace(strTwo) || strOne.Length != strTwo.Length)
+                return false;
+            strOne = strOne.Trim();
+            strTwo = strTwo.Trim();
+            if (strOne.Length != strTwo.Length)
+                return false;
+
+            Dictionary<char, char> strOneDictionary = new() { { strOne[0], strTwo[0] } };       // k, v
+            Dictionary<char, char> strTwoDictionary = new() { { strTwo[0], strOne[0] } };
+
+            for (var i = 1; i < strOne.Length; i++)
+            {
+                if (strOneDictionary.ContainsKey(strOne[i]) && strOneDictionary[strOne[i]] != strTwo[i])
+                {
+                    return false;
+                }
+                if (strTwoDictionary.ContainsKey(strTwo[i]) && strTwoDictionary[strTwo[i]] != strOne[i])
+                {
+                    return false;
+                }
+                strOneDictionary.Add(strOne[i], strTwo[i]);
+                strTwoDictionary.Add(strTwo[i], strOne[i]);
+            }
+
+            return true;
+        }
     }
 }
