@@ -62,5 +62,30 @@ namespace DSQuestions.Tests
             // assert
             Assert.That(indexesFound, Is.EquivalentTo(indexes));
         }
+
+        [Test]
+        [TestCase("", "a", false)]
+        [TestCase(null, "a", false)]
+        [TestCase("a", "", false)]
+        [TestCase("a", null, false)]
+        [TestCase("", "", false)]
+        [TestCase(null, null, false)]
+
+        [TestCase("aba", "pqr", false)]
+        [TestCase("abacus", "rirfgs", true)]
+        [TestCase("ababr", "eoeoo", false)]
+        [TestCase("ababr", "pqrqo", false)]
+        [TestCase("badc", "baba", false)]
+        public void IsIsomorphic_WhenCalled_ReturnsTrueIfIsomorphic(string strOne, string strTwo, bool isIsomorphic)
+        {
+            // arrange
+            // done in setup
+
+            // act
+            var actual = _logicQuestions.IsIsomorphic(strOne, strTwo);
+
+            // assert
+            Assert.That(actual, Is.EqualTo(isIsomorphic));
+        }
     }
 }

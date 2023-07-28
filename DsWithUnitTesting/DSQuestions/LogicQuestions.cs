@@ -90,8 +90,10 @@
                 {
                     return false;
                 }
-                strOneDictionary.Add(strOne[i], strTwo[i]);
-                strTwoDictionary.Add(strTwo[i], strOne[i]);
+                if (!strOneDictionary.ContainsKey(strOne[i]))
+                    strOneDictionary.Add(strOne[i], strTwo[i]);
+                if (!strTwoDictionary.ContainsKey(strTwo[i]))
+                    strTwoDictionary.Add(strTwo[i], strOne[i]);
             }
 
             return true;
