@@ -117,7 +117,7 @@
         }
 
 
-        Dictionary<int, int> _fibNumbers = new();      // key, fib(key)
+        private readonly Dictionary<int, int> _fibNumbers = new();      // key, fib(key)
 
         public int GetFibonacciWithMemoization(int num)
         {
