@@ -115,5 +115,38 @@
                 return num;
             return GetFibonacci(num - 1) + GetFibonacci(num - 2);
         }
+
+
+        Dictionary<int, int> _fibNumbers = new();      // key, fib(key)
+
+        public int GetFibonacciWithMemoization(int num)
+        {
+            if (num == 0 || num == 1)
+                return num;
+
+            int prevOne;
+            if (_fibNumbers.ContainsKey(num - 1))
+            {
+                prevOne = _fibNumbers[num - 1];
+                _fibNumbers.Add(num - 1, prevOne);
+            }
+            else
+            {
+                prevOne = GetFibonacci(num - 1);
+            }
+
+            int prevTwo;
+            if (_fibNumbers.ContainsKey(num - 2))
+            {
+                prevTwo = _fibNumbers[num - 2];
+                _fibNumbers.Add(num - 2, prevTwo);
+            }
+            else
+            {
+                prevTwo = GetFibonacci(num - 2);
+            }
+
+            return prevOne + prevTwo;
+        }
     }
 }
