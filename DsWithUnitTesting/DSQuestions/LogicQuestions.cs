@@ -158,7 +158,7 @@
                 return null;
 
             Dictionary<char, int> charsWithIndex = new();       // key = character , value = index
-            for (var i = 0; i <= str.Length; i++)
+            for (var i = 0; i < str.Length; i++)
             {
                 if (charsWithIndex.ContainsKey(str[i]))
                 {

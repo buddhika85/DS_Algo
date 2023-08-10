@@ -121,5 +121,24 @@ namespace DSQuestions.Tests
                 Assert.That(_logicQuestions.GetFibonacciWithMemoization(i), Is.EqualTo(fibonacciSequence[i]));
             }
         }
+
+        [Test]
+        [TestCase(null, null)]
+        [TestCase("", null)]
+        [TestCase(" ", null)]
+        [TestCase("Aabc1Acbd", 1)]
+        [TestCase("aabAA33b", null)]
+        [TestCase("aBA", 0)]
+        public void GetFirstNonRepeatingIndex_WhenCalled_GetFirstNonRepeatingIndex(string input, int? expectedRepeatingIndex)
+        {
+            // arrange
+            // done in setup
+
+            // act
+            var actual = _logicQuestions.GetFirstNonRepeatingIndex(input);
+
+            // assert
+            Assert.That(actual, Is.EqualTo(expectedRepeatingIndex));
+        }
     }
 }
