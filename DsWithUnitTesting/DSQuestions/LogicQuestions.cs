@@ -148,5 +148,32 @@
 
             return prevOne + prevTwo;
         }
+
+        // returns first non-repeating characters index
+        // A a b 1 A c d => non repeating is a => returns index of a which is 1
+        // a a 1 1 A A => all chars repeat => so return null
+        public int? GetFirstNonRepeatingIndex(string str)
+        {
+            if (string.IsNullOrWhiteSpace(str))
+                return null;
+
+            Dictionary<char, int> charsWithIndex = new();       // key = character , value = index
+            for (var i = 0; i <= str.Length; i++)
+            {
+                if (charsWithIndex.ContainsKey(str[i]))
+                {
+                    // it repeats - so no need to store
+                    charsWithIndex.Remove(str[i]);
+                }
+                else
+                {
+                    charsWithIndex.Add(str[i], i);
+                }
+            }
+
+            if (charsWithIndex.Any())
+                return charsWithIndex.First().Value;
+            return null;
+        }
     }
 }
