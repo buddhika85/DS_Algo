@@ -181,6 +181,9 @@
             if (string.IsNullOrWhiteSpace(str))
                 return false;
 
+            if (str.Length == 1)
+                return true;
+
             var left = 0;
             var right = str.Length - 1;
             while (left < right)

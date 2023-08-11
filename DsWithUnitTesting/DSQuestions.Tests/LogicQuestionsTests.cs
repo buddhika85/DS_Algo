@@ -140,5 +140,28 @@ namespace DSQuestions.Tests
             // assert
             Assert.That(actual, Is.EqualTo(expectedRepeatingIndex));
         }
+
+        [Test]
+        [TestCase(null, false)]
+        [TestCase("", false)]
+        [TestCase(" ", false)]
+        [TestCase("abcba", true)]
+        [TestCase("abccba", true)]
+        [TestCase("malayalam", true)]
+        [TestCase("malayalaM", false)]
+        [TestCase("b", true)]
+        [TestCase("abca", false)]
+        [TestCase("aA", false)]
+        public void IsPalindrome_WhenCalled_ReturnTrueIfPalindrome(string str, bool expected)
+        {
+            // arrange
+            // done in setup
+
+            // act
+            var actual = _logicQuestions.IsPalindrome(str);
+
+            // assert
+            Assert.That(actual, Is.EqualTo(expected));
+        }
     }
 }
