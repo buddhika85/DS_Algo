@@ -175,5 +175,20 @@
                 return charsWithIndex.First().Value;
             return null;
         }
+
+        public bool IsPalindrome(string str)
+        {
+            if (string.IsNullOrWhiteSpace(str))
+                return false;
+
+            var left = 0;
+            var right = str.Length - 1;
+            while (left < right)
+            {
+                if (str[left++] != str[right--])
+                    return false;
+            }
+            return true;
+        }
     }
 }
