@@ -193,5 +193,29 @@
             }
             return true;
         }
+
+        // array needs to be sorted
+        public int BinarySearch(int[] array, int value)
+        {
+            // validations
+            if (!array.Any() || value < array[0] || value > array[array.Length - 1])
+                return -1;
+
+            var left = 0;
+            var right = array.Length - 1;
+
+            while (left < right)
+            {
+                var middle = (left + right) / 2;
+                if (array[middle] == value)
+                    return middle;
+                if (array[middle] > value)
+                    right = middle - 1;
+                if (array[middle] < value)
+                    left = middle + 1;
+            }
+
+            return -1;      // not found
+        }
     }
 }
