@@ -204,7 +204,7 @@
             var left = 0;
             var right = array.Length - 1;
 
-            while (left < right)
+            while (left <= right)
             {
                 var middle = (left + right) / 2;
                 if (array[middle] == value)

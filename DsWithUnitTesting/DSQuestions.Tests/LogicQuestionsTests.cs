@@ -163,5 +163,28 @@ namespace DSQuestions.Tests
             // assert
             Assert.That(actual, Is.EqualTo(expected));
         }
+
+        [Test]
+        [TestCase(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 11, -1)]
+        [TestCase(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 0, -1)]
+        [TestCase(new[] { 1, 2 }, 1, 0)]
+        [TestCase(new[] { 1, 2 }, 2, 1)]
+        [TestCase(new[] { 1, 2, 3, 4, 5 }, 3, 2)]
+        [TestCase(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 3, 2)]
+        [TestCase(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 5, 4)]
+        [TestCase(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 6, 5)]
+        [TestCase(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 1, 0)]
+        [TestCase(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 10, 9)]
+        public void BinarySearch_WhenCalled_ReturnsIndexIfFoundElseNegOne(int[] sortedArray, int value, int index)
+        {
+            // arrange
+            // done in setup
+
+            // act
+            var actual = _logicQuestions.BinarySearch(sortedArray, value);
+
+            // assert
+            Assert.That(actual, Is.EqualTo(index));
+        }
     }
 }
