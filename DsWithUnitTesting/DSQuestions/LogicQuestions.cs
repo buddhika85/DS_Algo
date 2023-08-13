@@ -217,5 +217,22 @@
 
             return -1;      // not found
         }
+
+        // array needs to be sorted 
+        public int RecursiveBinarySearch(int[] array, int value, int left, int right)
+        {
+            // validations
+            if (!array.Any() || value < array[0] || value > array[array.Length - 1])
+                return -1;
+
+            var middle = (left + right) / 2;
+            if (array[middle] == value)
+                return middle;
+            if (array[middle] > value)
+                right = middle - 1;
+            if (array[middle] < value)
+                left = middle + 1;
+            return RecursiveBinarySearch(array, value, left, right);
+        }
     }
 }
