@@ -242,11 +242,12 @@
         {
             var left = 0;
             var right = array.Length - 1;
-            var middle = (left + right) / 2;
-            if (array[middle] == target)
-                return middle;
+
             while (left <= right)
             {
+                var middle = (left + right) / 2;
+                if (array[middle] == target)
+                    return middle;
                 if (array[left] <= array[middle])
                 {
                     // left part is sorted
