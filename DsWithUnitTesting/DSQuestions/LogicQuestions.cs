@@ -234,5 +234,50 @@
                 left = middle + 1;
             return RecursiveBinarySearch(array, value, left, right);
         }
+
+        // [] target = 10 --> -1 not found
+        // [1,2,3,4,5]  target = 3 --> index 2 
+        // [3,4,5,1,2]  target = 3 --> index 0 
+        public int SortedRotatedSearch(int[] array, int target)
+        {
+            var left = 0;
+            var right = array.Length - 1;
+            var middle = (left + right) / 2;
+            if (array[middle] == target)
+                return middle;
+            while (left <= right)
+            {
+                if (array[left] <= array[middle])
+                {
+                    // left part is sorted
+                    if (target >= array[left] && target < array[middle])
+                    {
+                        // explore left
+                        right = middle - 1;
+                    }
+                    else
+                    {
+                        // explore right
+                        left = middle + 1;
+                    }
+                }
+                else
+                {
+                    // right part is sorted
+                    if (target > array[middle] && target <= array[right])
+                    {
+                        // explore right
+                        left = middle + 1;
+                    }
+                    else
+                    {
+                        // explore left
+                        right = middle - 1;
+                    }
+                }
+            }
+
+            return -1;
+        }
     }
 }
