@@ -227,14 +227,42 @@ namespace DSQuestions.Tests
         [TestCase(new[] { 3, 4, 5, 1, 2 }, 3, 0)]
         [TestCase(new[] { 1, 2, 3, 4, 5, 6 }, 4, 3)]
         [TestCase(new[] { 3, 4, 5, 6, 1, 2 }, 4, 1)]
-        public void SortedRotatedSearch_WhenCalled_ReturnsIndexIfFoundElseNegOne(int[] sortedArray, int value,
+        public void SortedRotatedSearch_WhenCalled_ReturnsIndexIfFoundElseNegOne(int[] sortedRotatedArray, int value,
             int index)
         {
             // arrange
             // done in setup
 
             // act
-            var actual = _logicQuestions.SortedRotatedSearch(sortedArray, value);
+            var actual = _logicQuestions.SortedRotatedSearch(sortedRotatedArray, value);
+
+            // assert
+            Assert.That(actual, Is.EqualTo(index));
+        }
+
+        [Test]
+        [TestCase(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 11, -1)]
+        [TestCase(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 0, -1)]
+        [TestCase(new[] { 1, 2 }, 1, 0)]
+        [TestCase(new[] { 1, 2 }, 2, 1)]
+        [TestCase(new[] { 1, 2, 3, 4, 5 }, 3, 2)]
+        [TestCase(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 3, 2)]
+        [TestCase(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 5, 4)]
+        [TestCase(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 6, 5)]
+        [TestCase(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 1, 0)]
+        [TestCase(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 10, 9)]
+        [TestCase(new[] { 1, 2, 3, 4, 5 }, 3, 2)]
+        [TestCase(new[] { 3, 4, 5, 1, 2 }, 3, 0)]
+        [TestCase(new[] { 1, 2, 3, 4, 5, 6 }, 4, 3)]
+        [TestCase(new[] { 3, 4, 5, 6, 1, 2 }, 4, 1)]
+        public void RecursiveSortedRotatedSearch_WhenCalled_ReturnsIndexIfFoundElseNegOne(int[] sortedRotatedArray, int value,
+            int index)
+        {
+            // arrange
+            // done in setup
+
+            // act
+            var actual = _logicQuestions.RecursiveSortedRotatedSearch(sortedRotatedArray, value, 0, sortedRotatedArray.Length - 1);
 
             // assert
             Assert.That(actual, Is.EqualTo(index));

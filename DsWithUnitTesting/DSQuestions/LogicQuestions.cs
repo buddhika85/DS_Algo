@@ -280,5 +280,46 @@
 
             return -1;
         }
+
+
+        public int RecursiveSortedRotatedSearch(int[] array, int target, int left, int right)
+        {
+            var middle = (left + right) / 2;
+            if (array[middle] == target)
+                return middle;
+            if (array[left] <= array[middle])
+            {
+                // left part is sorted
+                if (target >= array[left] && target < array[middle])
+                {
+                    // explore left
+                    right = middle - 1;
+                }
+                else
+                {
+                    // explore right
+                    left = middle + 1;
+                }
+
+                RecursiveSortedRotatedSearch(array, target, left, right);
+            }
+            else
+            {
+                // right part is sorted
+                if (target > array[middle] && target <= array[right])
+                {
+                    // explore right
+                    left = middle + 1;
+                }
+                else
+                {
+                    // explore left
+                    right = middle - 1;
+                }
+
+                RecursiveSortedRotatedSearch(array, target, left, right);
+            }
+            return -1;
+        }
     }
 }
