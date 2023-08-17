@@ -301,7 +301,7 @@
                     left = middle + 1;
                 }
 
-                RecursiveSortedRotatedSearch(array, target, left, right);
+                return RecursiveSortedRotatedSearch(array, target, left, right);
             }
             else
             {
@@ -317,7 +317,87 @@
                     right = middle - 1;
                 }
 
-                RecursiveSortedRotatedSearch(array, target, left, right);
+                return RecursiveSortedRotatedSearch(array, target, left, right);
+            }
+            return -1;
+        }
+
+        // [1,2,2,2,3] , t = 2 -> [1,3]
+        // [1,2,2,2,3] , t = 3 -> [4,4
+        // [1,2,2,2,3] , t = 4 -> [-1,-1]
+        public int[] FindFirstAndLastIndex(int[] array, int target)
+        {
+            if (array.Length == 1 && array[0] == target)
+            {
+                return new[] { 0, 0 };
+            }
+            if (array.Length == 1 && array[0] != target)
+            {
+                return new[] { -1, -1 };
+            }
+
+            return new[] { FindLeftExtreme(target, array), FindRightExtreme(target, array) };
+        }
+
+        private int FindRightExtreme(int target, int[] array)
+        {
+            var left = 0;
+            var right = array.Length - 1;
+            while (left <= right)
+            {
+                var middle = (left + right) / 2;
+                if (array[middle] == target)
+                {
+                    if (array[middle + 1] > target)
+                    {
+                        // found right extreme
+                        return middle;
+                    }
+
+                    // search right for more right extreme
+                    left = middle + 1;
+                }
+                else if (array[middle] < target)
+                {
+                    // go right
+                    left = middle + 1;
+                }
+                else //if (array[middle] > target)
+                {
+                    // go left
+                    right = middle - 1;
+                }
+            }
+            return -1;
+        }
+
+        private int FindLeftExtreme(int target, int[] array)
+        {
+            var left = 0;
+            var right = array.Length - 1;
+            while (left <= right)
+            {
+                var middle = (left + right) / 2;
+                if (array[middle] == target)
+                {
+                    // go left and see
+                    if (array[middle - 1] < target)
+                    {
+                        // found left extreme
+                        return middle;
+                    }
+
+                    // go more to left
+                    right = middle - 1;
+                }
+                else if (array[middle] < target)
+                {
+                    left = middle + 1;
+                }
+                else //if (array[middle] > target)
+                {
+                    right = middle - 1;
+                }
             }
             return -1;
         }
