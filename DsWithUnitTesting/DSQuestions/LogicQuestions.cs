@@ -348,7 +348,8 @@
                 var middle = (left + right) / 2;
                 if (array[middle] == target)
                 {
-                    if (array[middle + 1] > target)
+                    var afterMiddle = middle + 1;
+                    if (afterMiddle > array.Length - 1 || array[afterMiddle] > target)
                     {
                         // found right extreme
                         return middle;
@@ -380,8 +381,9 @@
                 var middle = (left + right) / 2;
                 if (array[middle] == target)
                 {
+                    var beforeMiddle = middle - 1;
                     // go left and see
-                    if (array[middle - 1] < target)
+                    if (beforeMiddle < 0 || array[beforeMiddle] < target)
                     {
                         // found left extreme
                         return middle;
