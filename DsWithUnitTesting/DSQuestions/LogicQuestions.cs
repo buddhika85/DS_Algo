@@ -403,5 +403,12 @@
             }
             return -1;
         }
+
+
+        public bool Search2DArray(int target, int[,] array)
+        {
+            return false;
+        }
+
     }
 }
