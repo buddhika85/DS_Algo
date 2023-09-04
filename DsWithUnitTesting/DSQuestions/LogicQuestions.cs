@@ -407,6 +407,10 @@
 
         public bool Search2DArray(int target, int[,] array)
         {
+            // identify the row which may contain the target
+
+            // if a row found
+            // find the element with in it
             return false;
         }
 
