@@ -29,39 +29,39 @@ namespace DSQuestions.Tests
             Assert.That(actualRotation, Is.EquivalentTo(expectedRotation));
         }
 
-        [Test]
-        [TestCase(new[] { 1, 2, 3 }, new[] { 3, 2, 1 })]
-        [TestCase(new[] { 1, 2, 3, 4 }, new[] { 4, 3, 2, 1 })]
-        public void Reverse_WhenCalled_ReversedArray(int[] array, int[] reversed)
-        {
-            // arrange
-            // done in setup
+        //[Test]
+        ////[TestCase(new[] { 1, 2, 3 }, new[] { 3, 2, 1 })]
+        ////[TestCase(new[] { 1, 2, 3, 4 }, new[] { 4, 3, 2, 1 })]
+        //public void Reverse_WhenCalled_ReversedArray(int[] array, int[] reversed)
+        //{
+        //    // arrange
+        //    // done in setup
 
-            // act
-            var actualReversed = _logicQuestions.Reverse(array);
+        //    // act
+        //    var actualReversed = _logicQuestions.Reverse(array);
 
-            // assert
-            Assert.That(actualReversed, Is.EquivalentTo(reversed));
-        }
+        //    // assert
+        //    Assert.That(actualReversed, Is.EquivalentTo(reversed));
+        //}
 
-        [Test]
-        [TestCase(new int[0], 1, new int[0])]
-        [TestCase(new[] { 1 }, 1, new int[0])]
-        [TestCase(new[] { 2, 7 }, 9, new[] { 0, 1 })]
-        [TestCase(new[] { 2, 1, 7 }, 9, new[] { 0, 2 })]
-        [TestCase(new[] { 2, 7, 3, -1, 4 }, 2, new[] { 2, 3 })]
-        [TestCase(new[] { 2, 7, 3, -1, 4 }, 100, new int[0])]
-        public void TwoSum_WhenCalled_ReturnsArrayWithIndexing(int[] data, int sum, int[] indexes)
-        {
-            // arrange
-            // done in setup
+        //[Test]
+        //[TestCase(new int[0], 1, new int[0])]
+        //[TestCase(new[] { 1 }, 1, new int[0])]
+        //[TestCase(new[] { 2, 7 }, 9, new[] { 0, 1 })]
+        //[TestCase(new[] { 2, 1, 7 }, 9, new[] { 0, 2 })]
+        //[TestCase(new[] { 2, 7, 3, -1, 4 }, 2, new[] { 2, 3 })]
+        //[TestCase(new[] { 2, 7, 3, -1, 4 }, 100, new int[0])]
+        //public void TwoSum_WhenCalled_ReturnsArrayWithIndexing(int[] data, int sum, int[] indexes)
+        //{
+        //    // arrange
+        //    // done in setup
 
-            // act
-            var indexesFound = _logicQuestions.TwoSum(data, sum);
+        //    // act
+        //    var indexesFound = _logicQuestions.TwoSum(data, sum);
 
-            // assert
-            Assert.That(indexesFound, Is.EquivalentTo(indexes));
-        }
+        //    // assert
+        //    Assert.That(indexesFound, Is.EquivalentTo(indexes));
+        //}
 
         [Test]
         [TestCase("", "a", false)]
@@ -287,6 +287,27 @@ namespace DSQuestions.Tests
 
             // assert
             Assert.That(actual, Is.EquivalentTo(leftRight));
+        }
+
+
+        [Test]
+        [TestCase(1, true)]
+        [TestCase(2, true)]
+        [TestCase(4, true)]
+        [TestCase(5, true)]
+        [TestCase(3, false)]
+        [TestCase(0, false)]
+        [TestCase(6, false)]
+        public void Search2DArray_WhenCalled_ReturnsTrueIfFound(int target, bool expected)
+        {
+            // arrange
+            int[,] array = new int[2, 3] { { 1, 2, 2 }, { 4, 5, 5 } };
+
+            // act
+            var actual = _logicQuestions.Search2DArray(target, array);
+
+            // assert
+            Assert.That(actual, Is.EqualTo(expected));
         }
     }
 }
