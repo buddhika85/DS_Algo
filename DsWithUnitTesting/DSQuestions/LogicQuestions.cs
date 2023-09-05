@@ -408,9 +408,64 @@
         public bool Search2DArray(int target, int[,] array)
         {
             // identify the row which may contain the target
+            //Console.WriteLine(array.GetLength(0));      // 1st Dim of array - rows
+            //Console.WriteLine(array.GetLength(1));      // 2nd Dim of array - columns
+
+            var rows = array.GetLength(0);
+            var cols = array.GetLength(1);
 
             // if a row found
             // find the element with in it
+
+            var topRowFirst = array[0, 0];
+            var lastRowLast = array[rows - 1, cols - 1];
+
+            if (target < topRowFirst || target > lastRowLast)
+                return false;
+
+            var topRowIndex = 0;
+            var bottomRowIndex = rows - 1;
+
+            while (topRowIndex <= bottomRowIndex)
+            {
+                var midRowIndex = (topRowIndex + bottomRowIndex) / 2;
+                if (target < array[midRowIndex, 0])
+                {
+                    // go up
+                    bottomRowIndex = midRowIndex - 1;
+                }
+                else if (target > array[midRowIndex, cols - 1])
+                {
+                    // go down
+                    topRowIndex = midRowIndex + 1;
+                }
+                else
+                {
+                    // its maybe within this row
+                    // perform binary search on this row
+                    var left = 0;
+                    var right = cols - 1;
+                    while (left <= right)
+                    {
+                        var mid = (left + right) / 2;
+                        if (target < array[midRowIndex, mid])
+                        {
+                            // go left
+                            right = mid - 1;
+                        }
+                        else if (target > array[midRowIndex, mid])
+                        {
+                            // go right
+                            left = mid + 1;
+                        }
+                        else
+                        {
+                            // found 
+                            return true;
+                        }
+                    }
+                }
+            }
             return false;
         }
 
