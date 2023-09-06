@@ -404,7 +404,6 @@
             return -1;
         }
 
-
         public bool Search2DArray(int target, int[,] array)
         {
             // identify the row which may contain the target
@@ -469,5 +468,24 @@
             return false;
         }
 
+        public void BubbleSort(int[] array)
+        {
+            if (array.Length == 0)
+                return;
+
+            var swapped = true;
+            for (var i = 0; i < array.Length && swapped; i++)
+            {
+                swapped = false;
+                for (var j = 1; j < array.Length - i; j++)
+                {
+                    if (array[j] < array[j - 1])
+                    {
+                        (array[j], array[j - 1]) = (array[j - 1], array[j]);
+                        swapped = true;
+                    }
+                }
+            }
+        }
     }
 }
