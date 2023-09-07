@@ -487,5 +487,27 @@
                 }
             }
         }
+
+        // start from 1 go forward
+        // for each element go backwards and find correct place
+        public void InsertionSort(int[] array)
+        {
+            for (var i = 1; i < array.Length; i++)
+            {
+                var current = array[i];
+                var j = i - 1;
+                while (j >= 0 && array[j] > current)
+                {
+                    array[j + 1] = array[j];
+                    j--;
+                }
+
+                if (j < i - 1)
+                {
+                    // we have gone backwards
+                    array[j + 1] = current;
+                }
+            }
+        }
     }
 }
