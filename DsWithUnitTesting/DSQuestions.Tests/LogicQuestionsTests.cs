@@ -345,5 +345,23 @@ namespace DSQuestions.Tests
             // assert
             Assert.That(unsorted, Is.EquivalentTo(expected));
         }
+
+        [Test]
+        [TestCase(new[] { 4, 3, 2, 1 }, new[] { 1, 2, 3, 4 })]
+        [TestCase(new[] { 4, 3, 1, 2 }, new[] { 1, 2, 3, 4 })]
+        [TestCase(new[] { 1, 2, 3, 4 }, new[] { 1, 2, 3, 4 })]
+        [TestCase(new[] { 5, 4, -3, 1, 1 }, new[] { -3, 1, 1, 4, 5 })]
+        public void SelectionSort_WhenCalled_ReturnsSorted(int[] unsorted, int[] expected)
+        {
+            // arrange
+            // done in setup
+
+
+            // act
+            _logicQuestions.SelectionSort(unsorted);
+
+            // assert
+            Assert.That(unsorted, Is.EquivalentTo(expected));
+        }
     }
 }
