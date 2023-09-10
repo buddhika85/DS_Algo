@@ -490,6 +490,7 @@
 
         // start from 1 go forward
         // for each element go backwards and find correct place
+        // Like sorting a your hand in a card game
         public void InsertionSort(int[] array)
         {
             for (var i = 1; i < array.Length; i++)
@@ -506,6 +507,28 @@
                 {
                     // we have gone backwards
                     array[j + 1] = current;
+                }
+            }
+        }
+
+        // Multiple passes through data set
+        // each pass we find the smallest and move it to left position
+        public void SelectionSort(int[] array)
+        {
+            for (var i = 0; i < array.Length - 1; i++)
+            {
+                var smallestIndex = i;
+                for (var j = i + 1; j < array.Length; j++)
+                {
+                    if (array[j] < array[smallestIndex])
+                    {
+                        smallestIndex = j;
+                    }
+                }
+                //swap
+                if (smallestIndex > i)
+                {
+                    (array[i], array[smallestIndex]) = (array[smallestIndex], array[i]);
                 }
             }
         }
