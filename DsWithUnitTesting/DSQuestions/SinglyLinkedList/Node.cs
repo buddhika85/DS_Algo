@@ -1,8 +1,8 @@
 ﻿namespace DSQuestions.SinglyLinkedList
 {
-    public class Node
+    public class Node<T> where T : class
     {
-        public int Value { get; set; }
-        public Node? Next { get; set; }
+        public T Value { get; set; } = null!;
+        public Node<T>? Next { get; set; }
     }
 }
