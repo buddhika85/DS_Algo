@@ -41,19 +41,17 @@
             if (Size == 0)
             {
                 // now the size will become 1
-                Head = newNode;
-                Tail = newNode;
+                AddAsTheFirstToAnEmptyLinkedList(newNode);
             }
             else
             {
                 // size will be current size + 1
-                var oldHead = Head;
-                Head = newNode;
-                newNode.Next = oldHead;
+                AddAsTheFirstToNonEmptyLinkedList(newNode);
             }
 
             ++Size;
         }
+
 
         //•	addAtTail(value) -  Add a node of given value at the last element of the linked list.
         public void AddAtTail(T value)
@@ -63,21 +61,104 @@
             if (Size == 0 || Head == null || Tail == null)
             {
                 // now the size will become 1
-                Head = newNode;
-                Tail = newNode;
+                AddAsTheFirstToAnEmptyLinkedList(newNode);
             }
             else
             {
                 // size will be current size + 1
-                Tail.Next = newNode;
-                Tail = newNode;
+                AddToTailOfNonEmptyLinkedList(newNode);
             }
 
             ++Size;
         }
+
         //•	addAtIndex(index, value) Add a node of given value before the index th node in the linked list.
+        public void AddAtIndex(int index, T value)
+        {
+            var newNode = new Node<T> { Next = null, Value = value };
+
+            if (Size == 0 || Head == null || Tail == null)
+            {
+                // empty
+                if (index == 0)
+                {
+                    // add to head
+                    AddAsTheFirstToAnEmptyLinkedList(newNode);
+                    ++Size;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException($"LL is empty. You can only insert to index 0. You cannot insert a node to index {index} for this.");
+                }
+            }
+            else
+            {
+                // non empty
+                if (index <= Size)
+                {
+                    // valid
+                    if (index == 0)
+                    {
+                        // add to head
+                        AddAsTheFirstToNonEmptyLinkedList(newNode);
+                    }
+                    else if (index == Size)
+                    {
+                        // add to tail
+                        AddToTailOfNonEmptyLinkedList(newNode);
+                    }
+                    else
+                    {
+                        // add to middle
+                        var currentIndex = 1;
+                        var previousOfNewNode = Head.Next;
+                        while (previousOfNewNode != null && currentIndex != index)
+                        {
+                            ++currentIndex;
+                            previousOfNewNode = previousOfNewNode.Next;
+                        }
+
+                        if (previousOfNewNode == null)
+                        {
+                            throw new InvalidOperationException($"Cannot insert to {index} of the Linked List. Please check the logic.");
+                        }
+
+                        var newNext = previousOfNewNode.Next;
+                        previousOfNewNode.Next = newNode;
+                        newNode.Next = newNext;
+                    }
+                    ++Size;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException($"LL alreay has {Size} nodes. You can only put elements to indexes 0 to {Size} to this.");
+                }
+            }
+        }
+
         //•	If index equals the length of the linked list, the node will be appended to the end of the linked list. If index is greater than the length, don’t insert the node.
         //•	deleteAtIndex(index) Delete the index th node in the linked list, if the index is valid, else nothing happens.
 
+
+        private void AddAsTheFirstToAnEmptyLinkedList(Node<T> newNode)
+        {
+            Head = newNode;
+            Tail = newNode;
+        }
+
+
+        private void AddAsTheFirstToNonEmptyLinkedList(Node<T> newNode)
+        {
+            var oldHead = Head;
+            Head = newNode;
+            newNode.Next = oldHead;
+        }
+
+        private void AddToTailOfNonEmptyLinkedList(Node<T> newNode)
+        {
+            if (Tail != null)
+                Tail.Next = newNode;
+            Tail = newNode;
+        }
     }
 }
