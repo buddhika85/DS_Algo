@@ -1,4 +1,6 @@
-﻿namespace DSQuestions.SinglyLinkedList
+﻿using System.Text;
+
+namespace DSQuestions.SinglyLinkedList
 {
     public class SinglyLinkedList<T> where T : class
     {
@@ -226,6 +228,24 @@
             if (Tail != null)
                 Tail.Next = newNode;
             Tail = newNode;
+        }
+
+        public override string ToString()
+        {
+            if (Size == 0 || Head == null || Tail == null)
+                return "Empty Singly Linked List";
+            StringBuilder sb = new();
+            sb.AppendLine($"Singly Linked list size: {Size}");
+            sb.Append("Head -> ");
+            var current = Head;
+            while (current != null)
+            {
+                sb.Append(current);
+                current = current.Next;
+            }
+
+            sb.Append(" <- Tail");
+            return sb.ToString();
         }
     }
 }
