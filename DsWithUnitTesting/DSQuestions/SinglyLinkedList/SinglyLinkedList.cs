@@ -73,6 +73,7 @@
         }
 
         //•	addAtIndex(index, value) Add a node of given value before the index th node in the linked list.
+        //•	If index equals the length of the linked list, the node will be appended to the end of the linked list. If index is greater than the length, don’t insert the node.
         public void AddAtIndex(int index, T value)
         {
             var newNode = new Node<T> { Next = null, Value = value };
@@ -136,8 +137,74 @@
             }
         }
 
-        //•	If index equals the length of the linked list, the node will be appended to the end of the linked list. If index is greater than the length, don’t insert the node.
+
         //•	deleteAtIndex(index) Delete the index th node in the linked list, if the index is valid, else nothing happens.
+        public void DeleteIndex(int index)
+        {
+            if (Size == 0 || Head == null || Tail == null)
+            {
+                // empty LL
+                throw new ArgumentOutOfRangeException($"LL is empty. You can cannot delete any element of this.");
+            }
+
+            // non empty LL
+            if (index < Size)
+            {
+                // valid
+                if (index == 0)
+                {
+                    if (Size == 1)
+                    {
+                        Head = null;
+                        Tail = null;
+                    }
+                    else
+                    {
+                        var toDelete = Head;
+                        Head = toDelete.Next;
+                        toDelete.Next = null;
+                    }
+                }
+                else if (index <= Size - 1)
+                {
+                    // delete last or
+                    // delete from middle
+                    var previous = Head;
+                    var current = Head.Next;
+                    var currentIndex = 1;
+
+                    while (currentIndex < index && current != null)
+                    {
+                        currentIndex++;
+                        previous = current;
+                        current = current.Next;
+                    }
+
+                    // now index == currentIndex
+                    if (index == Size - 1)
+                    {
+                        // delete last
+                        previous.Next = null;
+                        Tail = previous;
+                    }
+                    else
+                    {
+                        // delete from middle
+                        var newNext = current?.Next;
+                        previous.Next = newNext;
+
+                        if (current != null)
+                            current.Next = null;
+                    }
+                }
+
+                --Size;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException($"LL alreay has {Size} nodes. You can only put elements to indexes 0 to {Size} to this.");
+            }
+        }
 
 
         private void AddAsTheFirstToAnEmptyLinkedList(Node<T> newNode)
