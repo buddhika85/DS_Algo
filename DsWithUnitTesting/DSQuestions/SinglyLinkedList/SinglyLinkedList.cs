@@ -97,7 +97,7 @@ namespace DSQuestions.SinglyLinkedList
             else
             {
                 // non empty
-                if (index <= Size)
+                if (index <= Size && index >= 0)
                 {
                     // valid
                     if (index == 0)
@@ -114,7 +114,7 @@ namespace DSQuestions.SinglyLinkedList
                     {
                         // add to middle
                         var currentIndex = 1;
-                        var previousOfNewNode = Head.Next;
+                        var previousOfNewNode = Head;
                         while (previousOfNewNode != null && currentIndex != index)
                         {
                             ++currentIndex;
@@ -150,7 +150,7 @@ namespace DSQuestions.SinglyLinkedList
             }
 
             // non empty LL
-            if (index < Size)
+            if (index < Size && index >= 0)
             {
                 // valid
                 if (index == 0)
@@ -204,7 +204,7 @@ namespace DSQuestions.SinglyLinkedList
             }
             else
             {
-                throw new ArgumentOutOfRangeException($"LL alreay has {Size} nodes. You can only put elements to indexes 0 to {Size} to this.");
+                throw new ArgumentOutOfRangeException($"LL alreay has {Size} nodes. You can only delete elements to indexes 0 to {Size} to this.");
             }
         }
 
@@ -242,6 +242,8 @@ namespace DSQuestions.SinglyLinkedList
             {
                 sb.Append(current);
                 current = current.Next;
+                if (current != null)
+                    sb.Append(" --> ");
             }
 
             sb.Append(" <- Tail");
