@@ -18,7 +18,34 @@ namespace CustomDsTestersConsole
         public void Test()
         {
             TestInsert();
-            TestFind();
+            //TestFind();
+            TestRemove();
+        }
+
+        private void TestRemove()
+        {
+            var items = new List<int>
+            {
+                60,
+                29,
+                27
+            };
+            foreach (var toRemove in items)
+            {
+                Remove(toRemove);
+                WriteLine("\n");
+            }
+        }
+
+        private void Remove(int toRemove)
+        {
+            Find(toRemove, out Node? node);
+            if (node != null)
+            {
+                _binarySearchTree.Remove(toRemove);
+                WriteLine($"After removing {toRemove}");
+                Find(toRemove, out node);
+            }
         }
 
         private void TestFind()
@@ -30,9 +57,14 @@ namespace CustomDsTestersConsole
             };
             foreach (var toFind in items)
             {
-                var found = _binarySearchTree.Find(toFind);
-                WriteLine(found != null ? $"Found {found}" : $"{toFind} --- Not Found");
+                Find(toFind, out Node? node);
             }
+        }
+
+        private void Find(int toFind, out Node? found)
+        {
+            found = _binarySearchTree.Find(toFind);
+            WriteLine(found != null ? $"Found {found}" : $"{toFind} --- Not Found");
         }
 
         private void TestInsert()
