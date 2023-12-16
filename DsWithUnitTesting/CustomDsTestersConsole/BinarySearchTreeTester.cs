@@ -28,7 +28,8 @@ namespace CustomDsTestersConsole
             {
                 60,
                 29,
-                27
+                27,
+                20
             };
             foreach (var toRemove in items)
             {
