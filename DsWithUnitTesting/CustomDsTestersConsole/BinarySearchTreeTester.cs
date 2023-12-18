@@ -14,13 +14,23 @@ namespace CustomDsTestersConsole
     public class BinarySearchTreeTester
     {
         private readonly BinarySearchTree _binarySearchTree = new();
+        private readonly BstTraversal _bstTraversal = new();
 
         public void Test()
         {
             TestInsert();
             //TestFind();
-            TestRemove();
+            //TestRemove();
+            TestBreadFirstSearch();
         }
+
+        // 20,6,35,3,8,27,55,1,3,26,29,60
+        private void TestBreadFirstSearch()
+        {
+            var result = _bstTraversal.BreadFirstSearch(_binarySearchTree);
+            WriteLine(string.Join(", ", result));
+        }
+
 
         private void TestRemove()
         {
