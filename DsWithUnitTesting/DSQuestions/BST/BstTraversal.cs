@@ -23,11 +23,24 @@
             return list;
         }
 
-
+        // left,current,right
         public List<int> DepthFirstSearchInOrder(BinarySearchTree bst)
         {
-            // To Do
-            return new List<int>();
+            if (bst.Root == null)
+                return new List<int>();
+
+            List<int> list = new();
+            InOrderTraverseSingleNode(bst.Root, list);
+            return list;
+        }
+
+        private void InOrderTraverseSingleNode(Node node, List<int> list)
+        {
+            if (node.Left != null)
+                InOrderTraverseSingleNode(node.Left, list);
+            list.Add(node.Value);
+            if (node.Right != null)
+                InOrderTraverseSingleNode(node.Right, list);
         }
 
         public List<int> DepthFirstSearchPreOrder(BinarySearchTree bst)

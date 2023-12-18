@@ -21,7 +21,16 @@ namespace CustomDsTestersConsole
             TestInsert();
             //TestFind();
             //TestRemove();
-            TestBreadFirstSearch();
+
+            //TestBreadFirstSearch();
+            TestDepthFirstInOrder();
+        }
+
+        // 1,3,3,6,8,20,25,27,29,35,55,60
+        private void TestDepthFirstInOrder()
+        {
+            var result = _bstTraversal.DepthFirstSearchInOrder(_binarySearchTree);
+            WriteLine(string.Join(", ", result));
         }
 
         // 20,6,35,3,8,27,55,1,3,26,29,60
@@ -30,6 +39,7 @@ namespace CustomDsTestersConsole
             var result = _bstTraversal.BreadFirstSearch(_binarySearchTree);
             WriteLine(string.Join(", ", result));
         }
+
 
 
         private void TestRemove()
