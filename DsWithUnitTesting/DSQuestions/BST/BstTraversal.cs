@@ -30,29 +30,54 @@
                 return new List<int>();
 
             List<int> list = new();
-            InOrderTraverseSingleNode(bst.Root, list);
+            InOrderTraverse(bst.Root, list);
             return list;
         }
 
-        private void InOrderTraverseSingleNode(Node node, List<int> list)
+        private void InOrderTraverse(Node node, List<int> list)
         {
             if (node.Left != null)
-                InOrderTraverseSingleNode(node.Left, list);
+                InOrderTraverse(node.Left, list);
             list.Add(node.Value);
             if (node.Right != null)
-                InOrderTraverseSingleNode(node.Right, list);
+                InOrderTraverse(node.Right, list);
         }
 
+        // current, left, right
         public List<int> DepthFirstSearchPreOrder(BinarySearchTree bst)
         {
-            // To Do
-            return new List<int>();
+            if (bst.Root == null) return new List<int>();
+            List<int> list = new();
+            PreOrderTraversal(bst.Root, list);
+            return list;
         }
 
+        private void PreOrderTraversal(Node node, List<int> list)
+        {
+            list.Add(node.Value);
+            if (node.Left != null)
+                PreOrderTraversal(node.Left, list);
+            if (node.Right != null)
+                PreOrderTraversal(node.Right, list);
+        }
+
+        // left, right, current
         public List<int> DepthFirstSearchPostOrder(BinarySearchTree bst)
         {
-            // To Do
-            return new List<int>();
+            if (bst.Root == null)
+                return new List<int>();
+            List<int> list = new();
+            PostOrderTraversal(bst.Root, list);
+            return list;
+        }
+
+        private void PostOrderTraversal(Node node, List<int> list)
+        {
+            if (node.Left != null)
+                PostOrderTraversal(node.Left, list);
+            if (node.Right != null)
+                PostOrderTraversal(node.Right, list);
+            list.Add(node.Value);
         }
     }
 }
